@@ -3,7 +3,7 @@
     <!-- Brand -->
     <div class="sidenav-header  align-items-center">
       <a class="navbar-brand" href="<%= dashboard_path %>">
-        <%= image_tag "brand/logo.png", class: "navbar-brand-img", alt: "..." %>
+        <%#= image_tag "brand/logo.png", class: "navbar-brand-img", alt: "..." %>
       </a>
     </div>
     <div class="navbar-inner">
@@ -18,9 +18,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <%= action_name.eql?('users') ? 'active': '' %>" href="<%= users_path %>">
+            <a class="nav-link <%= action_name.eql?('tenant') ? 'active': '' %>" href="<%= tenants_path %>">
               <i class="ni ni-single-02 text-yellow"></i>
-              <span class="nav-link-text">Users</span>
+              <span class="nav-link-text">Locataires</span>
             </a>
           </li>
           <%

@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   root to: "dashboard#index"
   get '/dashboard', to: "dashboard#index",  as: "dashboard"
   resources :users, except: [:show]
+  resources :tenants, except: [:show]
 end

@@ -1,0 +1,102 @@
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <%= render partial: 'shared/header', locals: {
+                    icon: 'users',
+                    breadcrumb_1: 'Locataires',
+                    breadcrumb_2: 'Liste'
+                }
+            %>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col col-sm">
+            <div class="card">
+                <div class="card-header border-0">
+                    <div class="row mb-2">
+                        <div class="col-12 col-lg-6">
+                            <% if notice %>
+                                <%= render partial: 'shared/alerts/dismissable', locals: {
+                                    message: notice,
+                                    icon_class: 'ni ni-like-2',
+                                    alert_type: 'alert-success',
+                                    dismissible: true
+                                } %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <h3 class="mb-0">Liste des locataires </h3>
+                    <div class="text-right">
+                        <%= link_to new_tenant_path, class:"btn btn-sm btn-primary" do  %>
+                            <i class="fa fa-plus"></i> Ajouter
+                        <% end %>
+                    </div>
+                </div>
+                <!-- Light table -->
+                <div class="table-responsive">
+                    <!-- Projects table -->
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">N-</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prenom</th>
+                                <th scope="col">Nationalite</th>
+                                <th scope="col">email</th>
+                                <th scope="col">Telephone</th>
+                                <th scope="col">Profession</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @tenants.each_with_index do |tenant, index| 
+                                edit_link = edit_tenant_path(tenant)
+                                show_link = tenant_path(tenant)
+                            %>
+                                <tr>
+                                    <th scope="row">
+                                        <%= index + 1 %>
+                                    </th>
+                                    <td>
+                                        <%= tenant.firstname %>
+                                    </td>
+                                    <td>
+                                        <%= tenant.lastname %>
+                                    </td>
+                                    <td>
+                                        <%= tenant.nationality %>
+                                    </td>
+                                    <td>
+                                        <%= tenant.email %>
+                                    </td>
+                                    <td>
+                                        <%= tenant.phone_number %>
+                                    </td>
+                                    <td><%= tenant.profession %>
+                                    <td class="text-right">
+                                        <%= link_to edit_link, class: "btn btn-sm btn-icon-only text-info", role:"button" do %>
+                                            <%= fa_icon 'edit' %>
+                                        <% end %>
+                                        <a class="btn btn-sm btn-icon-only text-danger button-delete" 
+                                            href="javascript:;" 
+                                            role="button"
+                                            modal-element-title="le locataire"
+                                            modal-element="<%= tenant.full_name %>"
+                                            modal-url="<%= show_link %>">
+                                            <%= fa_icon 'trash' %>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </div>
+                <%= render  "shared/delete_modal" %>
+            </div>
+        </div>
+    </div>
+</div>
+

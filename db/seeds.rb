@@ -6,20 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# User.delete_all
+Tenant.delete_all 
 
 
-puts "create sample user ...."
 
-user = User.new({
-    email: 'test@gmail.com',
-    password: 'password',
-    password_confirmation: 'password'
-});
+# Load dish types
+load Rails.root.join("db/seeds/tenants.rb")
 
-if user.save!
-    puts "user created !"
-else 
-    errors.full_messages.each do |msg|
-        puts msg
-    end
-end
+# laod dishes
+# load Rails.root.join("db/seeds/users.rb")
