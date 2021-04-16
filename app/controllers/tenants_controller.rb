@@ -2,7 +2,7 @@ class TenantsController < ApplicationController
   before_action :set_tenant, only: [:edit, :update, :destroy]
 
   def index
-    @tenants = Tenant.all.order(created_at: :DESC).page(@page).per(@per_page)
+    @tenants = Tenant.all.order(params[:sort]).page(@page).per(@per_page)
   end
 
   def new
@@ -54,7 +54,7 @@ class TenantsController < ApplicationController
   end
 
   def tenant_params 
-    params.require(:tenant).permit(:firstname, :lastname, :email, :phone_number, :identity_number, :country_code, :profession, :date_of_birth)
+    params.require(:tenant).permit(:sort, :firstname, :lastname, :email, :phone_number, :identity_number, :country_code, :profession, :date_of_birth)
   end
   
   
