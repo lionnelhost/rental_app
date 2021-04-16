@@ -10,6 +10,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+//= require datetime_picker_input 
+
 require("chart.js")
 require("Chart.extension.js")
 require("jquery-scrollLock.min.js")

@@ -31,31 +31,46 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="form-group">
-          <%= f.label :email, class: "form-control-label" %><br />
-          <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          <%= f.input :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
-          <%= f.label :phone_number, class: "form-control-label" %><br />
-          <%= f.text_field :phone_number, cols: 30, rows: 5, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
+          <%= f.input :phone_number, as: :numeric, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
         </div>
       </div>
     </div>
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-            <%= f.label :indentity_number, class: "form-control-label" %><br />
-            <%= f.text_field :identity_number, autofocus: true, autocomplete: "indentity_number", class: "form-control" %>
+            <%= f.input :identity_number, autofocus: true, autocomplete: "indentity_number", class: "form-control" %>
             </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
-          <%= f.label :profession, class: "form-control-label" %><br />
-          <%= f.text_field :profession, autofocus: true, autocomplete: "profession", class: "form-control" %>
+          <%= f.input :profession, autofocus: true, autocomplete: "profession", class: "form-control" %>
         </div>
       </div>
     </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+              <% I18n.with_locale(:fr) do %>
+                <%= f.input :country_code, priority_countries: ["SN", "FR", "DE"] %>
+              <% end %>
+            </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <%= f.input :date_of_birth, class: "form-control" %>
+          </div>
+        </div>
+    </div>
+
+    
+
+
+    
     <div class="pl-lg-4">
         <div class="row">
         <div class="col-lg-6">

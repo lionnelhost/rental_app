@@ -1,12 +1,39 @@
 class Tenant < ApplicationRecord
+    attr_accessor :country_code
 
-    validates :firstname, presence: true,  length: {maximum: 50, minumum: 2}
-    validates :lastname, presence: true,  length: {maximum: 50, minumum: 2}
-    validates :email, presence: true, uniqueness: { case_sensitive: false }
-    validates :phone_number, presence: true
+    validates :firstname, 
+        presence: {
+        message: "Le nom est obligatoire"
+      }, 
+        length: {maximum: 50, minumum: 2}
     
+    validates :lastname, 
+        presence: {
+            message: "Le prénom est obligatoire"
+          },  length: {maximum: 50, minumum: 2}
     
-
+    validates :phone_number,
+        presence: {
+          message: "Le numéro de téléphone obligatoire"
+        },
+        uniqueness: {
+          message: ->(object, data) do
+            "Le numéro #{data[:value]} existe déja!"
+          end
+        },
+        phone_number: true
+    validates :email,
+        presence: {
+            message: "L'addresse email est obligatoire"
+        },
+        uniqueness: {
+            case_sensitive: false,
+            message: ->(object, data) do
+              "L'adresse email #{data[:value]} existe déja!"
+            end
+          },
+        email: true
+          
     
     def full_name 
         "#{firstname } #{lastname}" 

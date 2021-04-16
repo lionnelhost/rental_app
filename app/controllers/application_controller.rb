@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
+    include Paginable
     layout :resolve_layout
     before_action :authenticate_user!
+
 
     def after_sign_out_path_for(user)
         login_path

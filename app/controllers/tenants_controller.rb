@@ -2,7 +2,7 @@ class TenantsController < ApplicationController
   before_action :set_tenant, only: [:edit, :update, :destroy]
 
   def index
-    @tenants = Tenant.all.order(created_at: :DESC)
+    @tenants = Tenant.all.order(created_at: :DESC).page(@page).per(@per_page)
   end
 
   def new
@@ -11,6 +11,7 @@ class TenantsController < ApplicationController
 
   def create
     @tenant = Tenant.new(tenant_params)
+    @tenant[:nationality] = params[:tenant][:contry_code]
     if @tenant.save
       flash[:success] = "Tenant successfully created"
       redirect_to tenants_path
@@ -25,6 +26,7 @@ class TenantsController < ApplicationController
   end
 
   def update
+        @tenant[:nationality] = params[:tenant][:contry_code]
       if @tenant.update(tenant_params)
         flash[:success] = "Object was successfully updated"
         redirect_to tenants_path
@@ -52,7 +54,7 @@ class TenantsController < ApplicationController
   end
 
   def tenant_params 
-    params.require(:tenant).permit(:firstname, :lastname, :email, :phone_number, :identity_number, :nationality, :profession, :date_of_birth)
+    params.require(:tenant).permit(:firstname, :lastname, :email, :phone_number, :identity_number, :country_code, :profession, :date_of_birth)
   end
   
   
