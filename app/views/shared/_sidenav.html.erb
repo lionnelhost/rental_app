@@ -23,14 +23,15 @@
               <span class="nav-link-text">Locataires</span>
             </a>
           </li>
-          <%
-=begin%>
- <li class="nav-item">
-            <a class="nav-link <%= action_name.eql?('icons') ? 'active': '' %>" href="<%#= pages_icons_path %>">
-              <i class="ni ni-planet text-orange"></i>
-              <span class="nav-link-text">Icons</span>
+          <li class="nav-item">
+            <a class="nav-link <%= action_name.eql?('apartment') ? 'active': '' %>" href="<%= apartments_path %>">
+              <i class="ni ni-building text-orange"></i>
+              <span class="nav-link-text">Appartements</span>
             </a>
           </li>
+          <%
+=begin%>
+ 
           
           <li class="nav-item">
             <a class="nav-link <%= action_name.eql?('tables') ? 'active': '' %>" href="<%#= pages_tables_path %>">
