@@ -12,7 +12,7 @@ const displayDeleteModal = () => {
                 $('#delete_modal').modal('show');
             });
         }
-    });
+    });  
 }
 
 export { displayDeleteModal }

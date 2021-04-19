@@ -1,6 +1,8 @@
 class Tenant < ApplicationRecord
     attr_accessor :country_code
 
+    has_many :paiements, dependent: :destroy
+
     validates :firstname, 
         presence: {
         message: "Le nom est obligatoire"

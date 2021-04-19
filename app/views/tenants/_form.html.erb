@@ -18,25 +18,25 @@
       <div class="col-lg-6">
         <div class="form-group">
           <%= f.label :firstname, class: "form-control-label" %><br />
-          <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname", class: "form-control" %>
+          <%= f.text_field :firstname, autofocus: true, label: "Nom de famille", autocomplete: "firstname", class: "form-control" %>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
           <%= f.label :lastname, class: "form-control-label" %><br />
-          <%= f.text_field :lastname, autofocus: true, autocomplete: "lastname", class: "form-control" %>
+          <%= f.text_field :lastname, autofocus: true, label: "Prénom(s)", autocomplete: "lastname", class: "form-control" %>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-6">
         <div class="form-group">
-          <%= f.input :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          <%= f.input :email, autofocus: true, label: "Email", autocomplete: "email", class: "form-control" %>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="form-group">
-          <%= f.input :phone_number, as: :numeric, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
+          <%= f.input :phone_number, as: :numeric, label: "Téléphone", autofocus: true, autocomplete: "phone_number", class: "form-control" %>
         </div>
       </div>
     </div>
@@ -56,13 +56,17 @@
         <div class="col-lg-6">
             <div class="form-group">
               <% I18n.with_locale(:fr) do %>
-                <%= f.input :country_code, priority_countries: ["SN", "FR", "DE"] %>
+                <%= f.input :country_code, label: "Nationalité", priority_countries: ["SN", "FR", "DE"] %>
               <% end %>
             </div>
         </div>
         <div class="col-lg-6">
           <div class="form-group">
-            <%= f.input :date_of_birth, class: "form-control" %>
+            <%= f.input :date_of_birth, 
+            as: :string, 
+            html5: true,
+            label: "Date de naissance", 
+            class: "form-control" %>
           </div>
         </div>
     </div>

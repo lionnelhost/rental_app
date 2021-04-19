@@ -1,10 +1,12 @@
 @import "vendor/nucleo/css/nucleo";
 @import "font-awesome";
-@import 'datetime_picker_input'; 
 
 // Bootstrap functions
 @import 'bootstrap/functions';
 @import "bootstrap/mixins";
+
+@import "flatpickr/dist/flatpickr.css";
+// @import "metismenu/dist/metisMenu.css";
 
 // Argon functions
 @import "custom/functions";

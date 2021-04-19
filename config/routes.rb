@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   resources :users, except: [:show]
   resources :tenants, except: [:show]
   resources :apartments, except: [:show]
+  resources :paiements, except: [:show]
 end
