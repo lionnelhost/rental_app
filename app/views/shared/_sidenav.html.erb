@@ -29,6 +29,13 @@
               <span class="nav-link-text">Appartements</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link <%= action_name.eql?('paiement') ? 'active': '' %>" href="<%= paiements_path %>">
+              <i class="ni ni-money-coins text-orange"></i>
+              <span class="nav-link-text">Loyers</span>
+            </a>
+          </li>
+          
           <%
 =begin%>
  

@@ -18,4 +18,5 @@ class Paiement < ApplicationRecord
   def solde 
     self.apartment.rent.to_i - self.amount.to_i
   end 
+  
 end

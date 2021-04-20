@@ -13,7 +13,7 @@ const initFlatpickr = () => {
 
         const flatConfig = {
             allowInput: true,
-            dateFormat: "d m y",
+            dateFormat: "Y-m-d",
             locale: {
             firstDayOfWeek: 1,
             months: {
