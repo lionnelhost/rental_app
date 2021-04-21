@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   root to: "dashboard#index"
   get '/dashboard', to: "dashboard#index",  as: "dashboard"
   resources :users, except: [:show]
-  resources :tenants, except: [:show]
+  resources :tenants
   resources :apartments, except: [:show]
   resources :paiements, except: [:show]
+
+  get '/profile/:id', to: "profile#edit", as: "user_profile"
+  put '/profile/:id', to: "profile#update", as: "update_profile"
 end

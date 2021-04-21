@@ -74,26 +74,24 @@
           <span class="docs-normal">Settings</span>
         </h6>
         <!-- Navigation -->
-        <%
-=begin%>
- <ul class="navbar-nav mb-md-3">
-          <li class="nav-item">
-            <a class="nav-link" href="<%#= dish_types_path %>">
-              <i class="ni ni-spaceship"></i>
-              <span class="nav-link-text">Types de plats</span>
-            </a>
-          </li>
+        <ul class="navbar-nav mb-md-3">
+           <li class="nav-item">
+            <%= link_to user_profile_path(current_user), class: "dropdown-item" do %>
+              <i class="ni ni-single-02"></i>
+              <span>Profile</span>
+            <% end %>  
+           </li>
+        </ul>
           
-          <li class="nav-item">
-            <a class="nav-link" href="<%#= dishes_path %>">
-              <i class="ni ni-palette"></i>
-              <span class="nav-link-text">Plats</span>
-            </a>
-          </li> 
-<%
-=end%>
-<%
+           <%
 =begin%>
+ <li class="nav-item">
+             <a class="nav-link" href="<%#= dishes_path %>">
+               <i class="ni ni-palette"></i>
+               <span class="nav-link-text">Plats</span>
+             </a>
+           </li> 
+
           <li class="nav-item">
             <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html" target="_blank">
               <i class="ni ni-ui-04"></i>
@@ -112,9 +110,9 @@
               <span class="nav-link-text">Upgrade to PRO</span>
             </a>
           </li> 
+        </ul> 
 <%
 =end%>
-        </ul>
       </div>
     </div>
   </div>

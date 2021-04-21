@@ -91,6 +91,7 @@ fr:
       default: "%d  %B  %Y"
       slash: '%d/%m/%Y'
       medium: "%A, %d %B %Y à %Hh %Mmin"
+      month: '%B %Y'
     order:
       - :day
       - :month
@@ -143,7 +144,7 @@ fr:
         other: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreurs'
   views:
     pagination:
-      next: ""
-      previous: ""
-      first: ""
-      last: ""
+      next: ">"
+      previous: "<"
+      first: "<<"
+      last: ">>"

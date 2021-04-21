@@ -1,5 +1,5 @@
 class TenantsController < ApplicationController
-  before_action :set_tenant, only: [:edit, :update, :destroy]
+  before_action :set_tenant, only: [:show, :edit, :update, :destroy]
 
   def index
     @tenants = Tenant.all.order(params[:sort]).page(@page).per(@per_page)
@@ -19,6 +19,11 @@ class TenantsController < ApplicationController
       flash[:error] = "Something went wrong"
       render :new
     end
+  end
+
+
+  def show 
+    @tenant_paiements = @tenant.paiements.page(@page).per(@per_page)
   end
   
 

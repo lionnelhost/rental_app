@@ -1,0 +1,30 @@
+<% content_for(:topnav_bg) { 'bg-default' } %>
+
+<div class="main-content" id="panel">
+  <%= render 'profile/header' %>
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col-xl-4 order-xl-2">
+          <%= render 'profile/summary_card' %>
+        </div>
+        <div class="col-xl-8 order-xl-1">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                    <div class="col-8">
+                        <h3 class="mb-0">Edit profile </h3>
+                    </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <%= render partial: 'profile/form', locals: {
+                            user: @user,
+                        } 
+                    %>
+                </div>
+            </div>
+        </div>
+      </div>
+    <%= render 'shared/footer' %>
+  </div>

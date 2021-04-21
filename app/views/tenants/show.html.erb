@@ -2,11 +2,11 @@
     <div class="container-fluid">
         <div class="header-body">
             <%= render partial: 'shared/header', locals: {
-                    icon: 'money',
-                    breadcrumb_1: 'Paiements',
-                    breadcrumb_2: 'Liste',
-                    main_url: paiements_path,
-                    breadcrumb_url: '#'
+                    icon: 'users',
+                    breadcrumb_1: 'Locataire',
+                    breadcrumb_2: @tenant.full_name,
+                    main_url: tenants_path,
+                    breadcrumb_url: tenant_path(@tenant)
                 }
             %>
         </div>
@@ -14,33 +14,13 @@
 </div>
 
 <div class="container-fluid mt--6">
-    <div class="row">
+    <div class="row justify-content-md-center">
         <div class="col col-sm">
             <div class="card">
-                <div class="card-header border-0">
-                    <div class="row mb-2">
-                        <div class="col-12 col-lg-6">
-                            <% if notice %>
-                                <%= render partial: 'shared/alerts/dismissable', locals: {
-                                    message: notice,
-                                    icon_class: 'ni ni-like-2',
-                                    alert_type: 'alert-success',
-                                    dismissible: true
-                                } %>
-                            <% end %>
-                        </div>
-                    </div>
-                    <h3 class="mb-0">Liste des Paiements </h3>
-                    <div class="text-right">
-                        <%= link_to new_paiement_path, class:"btn btn-sm btn-primary" do  %>
-                            <i class="fa fa-plus"></i> Ajouter
-                        <% end %>
-                    </div>
-                </div>
-                <!-- Light table -->
-                <div class="table-responsive">
+                <div class="card-body">
+                    <div class="table-responsive">
                     <!-- Projects table -->
-                    <table class="table align-items-center table-flush">
+                        <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">N-</th>
@@ -54,7 +34,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% @paiements.each_with_index do |paiement, index| 
+                            <% @tenant_paiements.each_with_index do |paiement, index| 
                                 edit_link = edit_paiement_path(paiement)
                                 show_link = paiement_path(paiement)
                             %>
@@ -95,11 +75,11 @@
                             <% end %>
                         </tbody>
                     </table>
+                    </div>
+                    <%= paginate @tenant_paiements %>
+                    <%= render  "shared/delete_modal" %>
                 </div>
-                <%= paginate @paiements %>
-                <%= render  "shared/delete_modal" %>
             </div>
         </div>
     </div>
 </div>
-

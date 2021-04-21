@@ -13,6 +13,6 @@ module Paginable
     end
 
     def set_per_page
-        @per_page ||= params[:per_page] || 10
+        @per_page ||= params[:per_page] || 3
     end
 end

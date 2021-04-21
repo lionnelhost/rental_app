@@ -1,0 +1,55 @@
+<table class="table align-items-center table-flush">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">N-</th>
+            <th scope="col">Locataire</th>
+            <th scope="col">Appartement</th>
+            <th scope="col">Periode</th>
+            <th scope="col">loyer</th>
+            <th scope="col">date de paiement</th>
+            <th scope="col">Solde</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% paiements.each_with_index do |paiement, index| 
+            edit_link = edit_paiement_path(paiement)
+            show_link = paiement_path(paiement)
+        %>
+            <tr>
+                <th scope="row">
+                    <%= index + 1 %>
+                </th>
+                <td>
+                    <%= paiement.tenant.full_name %>
+                </td>
+                <td>
+                    <%= paiement.apartment.address %>
+                </td>
+                <td>
+                    <%= display_date(paiement.period, :long) %>
+                </td>
+                <td>
+                    <%= paiement.amount %>
+                </td>
+                <td>
+                    <%= paiement.created_at %>
+                </td>
+                <td><%= paiement.solde %>
+                <td class="text-right">
+                    <%= link_to edit_link, class: "btn btn-sm btn-icon-only text-info", role:"button" do %>
+                        <%= fa_icon 'edit' %>
+                    <% end %>
+                    <a class="btn btn-sm btn-icon-only text-danger button-delete" 
+                        href="javascript:;" 
+                        role="button"
+                        modal-element-title="le paiement de Mr/Mme "
+                        modal-element="<%= paiement.tenant.full_name %>"
+                        modal-url="<%= show_link %>">
+                        <%= fa_icon 'trash' %>
+                    </a>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

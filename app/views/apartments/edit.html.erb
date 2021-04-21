@@ -4,7 +4,9 @@
             <%= render partial: 'shared/header', locals: {
                     icon: 'building',
                     breadcrumb_1: 'Appartements',
-                    breadcrumb_2: @apartment.id.to_s
+                    breadcrumb_2: @apartment.id.to_s,
+                    main_url: apartments_path,
+                    breadcrumb_url: '#'
                 }
             %>
         </div>

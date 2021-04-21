@@ -4,7 +4,9 @@
             <%= render partial: 'shared/header', locals: {
                     icon: 'users',
                     breadcrumb_1: 'Locataires',
-                    breadcrumb_2: 'Liste'
+                    breadcrumb_2: 'Liste',
+                    main_url: tenants_path,
+                    breadcrumb_url: '#'
                 }
             %>
         </div>
@@ -77,7 +79,10 @@
                                     </td>
                                     <td><%= tenant.profession %>
                                     <td class="text-right">
-                                        <%= link_to edit_link, class: "btn btn-sm btn-icon-only text-info", role:"button" do %>
+                                        <%= link_to show_link, class: "btn btn-sm btn-icon-only text-info", role:"button" do %>
+                                            <%= fa_icon 'eye' %>
+                                        <% end %>
+                                        <%= link_to edit_link, class: "btn btn-sm btn-icon-only text-warning", role:"button" do %>
                                             <%= fa_icon 'edit' %>
                                         <% end %>
                                         <a class="btn btn-sm btn-icon-only text-danger button-delete" 
