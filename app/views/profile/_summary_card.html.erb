@@ -1,10 +1,10 @@
 <div class="card card-profile">
-  <%= image_tag "theme/img-1-1000x600.jpg", class: "card-img-top", alt: "Image placeholder" %>
+  <%= image_tag "https://res.cloudinary.com/finelunch/image/upload/v1619001433/mini-background_azdb5k.jpg", class: "card-img-top", alt: "Image placeholder" %>
   <div class="row justify-content-center">
     <div class="col-lg-3 order-lg-2">
       <div class="card-profile-image">
         <a href="#">
-          <%= image_tag 'theme/team-4.jpg', class: 'rounded-circle' %>
+          <%= image_tag current_user.avatar_url, class: 'rounded-circle' %>
         </a>
       </div>
     </div>

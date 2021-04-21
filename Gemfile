@@ -27,6 +27,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Devise form authentification 
 gem "devise"
 
+gem 'carrierwave'
+gem 'cloudinary'
+
 gem 'simple_form'
 gem 'rails-i18n'
 
