@@ -1,6 +1,6 @@
   <% if ressource.errors.any? %>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong>There was an error saving the record:</strong>
+      <strong>Une erreur s'est produite:</strong>
       <ul>
         <% ressource.errors.full_messages.each do |message| %>
           <li><%= message %></li>
