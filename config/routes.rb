@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, 
     path: 'auth',
     controllers:
@@ -22,4 +23,7 @@ Rails.application.routes.draw do
 
   get '/profile/:id', to: "profile#edit", as: "user_profile"
   put '/profile/:id', to: "profile#update", as: "update_profile"
+
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
 end

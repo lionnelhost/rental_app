@@ -45,7 +45,7 @@
       </div>
       <div class="h5 mt-4">
         <span class="description">Addresse : </span>
-        <i class="ni business_briefcase-24 mr-2"></i><%= paiement.apartment.address if paiement.exist? %>
+        <i class="ni business_briefcase-24 mr-2"></i><%= paiement.apartment.address unless paiement.nil? %>
       </div>
       <div>
         <i class="ni education_hat mr-2"></i>Agence Immo Sen

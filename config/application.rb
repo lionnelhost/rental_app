@@ -14,6 +14,7 @@ module AppartRent
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.i18n.available_locales = [:fr, :en]
+    config.exceptions_app = self.routes # Add this line
 
     # Configuration for the application, engines, and railties goes here.
     #
