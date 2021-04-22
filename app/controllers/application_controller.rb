@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     include Paginable
     layout :resolve_layout
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:not_found, :internal_server_error]
     before_action :set_locale
 
 

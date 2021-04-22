@@ -5,6 +5,7 @@
 
 import 'bootstrap'
 import { dashboardChart } from '../pages/dashboard'
+import { showErrorPage } from '../pages/errors'
 import { paginatePaiements } from '../pages/paiement'
 import { paginateTenantPaiements, paginateTenants } from '../pages/tenant'
 import { initFlatpickr } from '../plugins/flatpiker'
@@ -29,6 +30,7 @@ paginateTenants();
 paginatePaiements();
 dashboardChart();
 paginateTenantPaiements();
+showErrorPage();
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
