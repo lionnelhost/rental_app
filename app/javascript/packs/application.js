@@ -15,7 +15,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-require("flatpickr")
+require("flatpickr");
+import 'flatpickr/dist/themes/light.css';
 
 
 require("chart.js")

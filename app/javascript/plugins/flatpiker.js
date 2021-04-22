@@ -1,4 +1,5 @@
 import flatpickr from "flatpickr"
+require("flatpickr/dist/flatpickr.min.css")
 
 const initFlatpickr = () => {
     document.addEventListener("turbolinks:load", () => {
