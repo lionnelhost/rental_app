@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      tenant:
+        one: 'Tenant'
+        other: 'Tenants'
+
+    attributes:
+      tenant:
+        firstname: 'Prénom'
+        lastname: 'Nom'
+        phone_number: 'Téléphone'
+        statuses:
+          active: 'active'
+          inactive: 'inactive'

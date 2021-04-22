@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     def after_sign_in_path_for(user)
         dashboard_path
     end
+    
+    def current_url
+        base_url + original_fullpath
+    end
 
     private
     def set_locale
@@ -25,4 +29,6 @@ class ApplicationController < ActionController::Base
         'dashboard'
         end
     end
+
+    
 end

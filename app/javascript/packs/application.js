@@ -4,6 +4,9 @@
 // that code so it'll be compiled.
 
 import 'bootstrap'
+import { dashboardChart } from '../pages/dashboard'
+import { paginatePaiements } from '../pages/paiement'
+import { paginateTenantPaiements, paginateTenants } from '../pages/tenant'
 import { initFlatpickr } from '../plugins/flatpiker'
 import { displayDeleteModal } from './utils'
 require("@rails/ujs").start()
@@ -22,7 +25,10 @@ require("argon.js")
 
 displayDeleteModal();
 initFlatpickr();
-
+paginateTenants();
+paginatePaiements();
+dashboardChart();
+paginateTenantPaiements();
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

@@ -1,85 +1,35 @@
-<div class="header bg-primary pb-6">
-    <div class="container-fluid">
-        <div class="header-body">
-            <%= render partial: 'shared/header', locals: {
-                    icon: 'users',
-                    breadcrumb_1: 'Locataire',
-                    breadcrumb_2: @tenant.full_name,
-                    main_url: tenants_path,
-                    breadcrumb_url: tenant_path(@tenant)
-                }
-            %>
-        </div>
-    </div>
-</div>
+<% content_for(:topnav_bg) { 'bg-default' } %>
 
-<div class="container-fluid mt--6">
-    <div class="row justify-content-md-center">
-        <div class="col col-sm">
+<div class="main-content" id="panel">
+  <%= render partial: 'tenants/header', locals: { tenant: @tenant } %>
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col-xl-4 order-xl-2">
+          <%= render partial: 'tenants/summary_card', locals: { tenant: @tenant, paiement: @tenant_paiements.first } %>
+        </div>
+        <div class="col-xl-8 order-xl-1">
             <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                    <!-- Projects table -->
-                        <table class="table align-items-center table-flush">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">N-</th>
-                                <th scope="col">Locataire</th>
-                                <th scope="col">Appartement</th>
-                                <th scope="col">Periode</th>
-                                <th scope="col">loyer</th>
-                                <th scope="col">date de paiement</th>
-                                <th scope="col">Solde</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% @tenant_paiements.each_with_index do |paiement, index| 
-                                edit_link = edit_paiement_path(paiement)
-                                show_link = paiement_path(paiement)
-                            %>
-                                <tr>
-                                    <th scope="row">
-                                        <%= index + 1 %>
-                                    </th>
-                                    <td>
-                                        <%= paiement.tenant.full_name %>
-                                    </td>
-                                    <td>
-                                        <%= paiement.apartment.address %>
-                                    </td>
-                                    <td>
-                                        <%= display_date(paiement.period, :month) %>
-                                    </td>
-                                    <td>
-                                        <%= paiement.amount %>
-                                    </td>
-                                    <td>
-                                        <%= display_date(paiement.created_at, :long) %>
-                                    </td>
-                                    <td><%= paiement.solde %>
-                                    <td class="text-right">
-                                        <%= link_to edit_link, class: "btn btn-sm btn-icon-only text-info", role:"button" do %>
-                                            <%= fa_icon 'edit' %>
-                                        <% end %>
-                                        <a class="btn btn-sm btn-icon-only text-danger button-delete" 
-                                            href="javascript:;" 
-                                            role="button"
-                                            modal-element-title="le paiement de Mr/Mme "
-                                            modal-element="<%= paiement.tenant.full_name %>"
-                                            modal-url="<%= show_link %>">
-                                            <%= fa_icon 'trash' %>
-                                        </a>
-                                    </td>
-                                </tr>
+                <div class="card-header">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-8">
+                            <h3 class="mb-0"> Liste des paiements de Mr : <%= @tenant.full_name %> </h3>
+                        </div>
+                        <div class="col-2 text-right">
+                            <%= link_to tenants_path, class:"btn btn-sm btn-default" do  %>
+                                <i class="fa fa-arrow-left"></i> Retour
                             <% end %>
-                        </tbody>
-                    </table>
+                        </div>
                     </div>
-                    <%= paginate @tenant_paiements %>
-                    <%= render  "shared/delete_modal" %>
+                </div>
+                <div class="card-body">
+                    <%= render partial: 'tenants/paiements', locals: {
+                            user: @tenant
+                        } 
+                    %>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+      </div>
+    <%= render 'shared/footer' %>
+  </div>

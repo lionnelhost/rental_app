@@ -1,0 +1,63 @@
+<div class="table-responsive">
+    <div class="col-sm-3 mb-3">
+        <select id="tenant_paiement_per_page_select" class="form-control">
+            <option>select option</option>
+            <% [5, 10, 20, 50, 100].each do |per_page| %>
+                <option><%= per_page %></option>
+            <% end %>
+        </select>
+    </div>
+    <!-- Projects table -->
+    <table class="table align-items-center table-flush">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">N-</th>
+                <th scope="col"><%= link_to "Période", :sort => "period"%></th>
+                <th scope="col"><%= link_to "Montant", :sort => "amount"%></th>
+                <th scope="col"><%= link_to "Date de paiement", :sort => "created_at"%></th>
+                <th scope="col">Solde</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @tenant_paiements.each_with_index do |paiement, index| 
+                edit_link = edit_paiement_path(paiement)
+                show_link = paiement_path(paiement)
+            %>
+                <tr>
+                    <th scope="row">
+                        <%= index + 1 %>
+                    </th>
+                    <td>
+                        <%= display_date(paiement.period, :month) %>
+                    </td>
+                    <td>
+                        <%= paiement.amount %>
+                    </td>
+                    <td>
+                        <%= display_date(paiement.created_at, :long) %>
+                    </td>
+                    <td class="d-flex justify-content-between">
+                        <%= paiement.solde %>
+                        <span class="<%= tenant_paiement_class(paiement)%> mr-2"><i class="fa <%= tenant_paiement_icon(paiement)%>"></i></span>
+                    </td>
+                    <td class="text-right">
+                        <%= link_to edit_link, class: "btn btn-sm btn-icon-only text-info", role:"button" do %>
+                            <%= fa_icon 'edit' %>
+                        <% end %>
+                        <a class="btn btn-sm btn-icon-only text-danger button-delete" 
+                            href="javascript:;" 
+                            role="button"
+                            modal-element-title="le paiement de Mr/Mme "
+                            modal-element="<%= paiement.tenant.full_name %>"
+                            modal-url="<%= show_link %>">
+                            <%= fa_icon 'trash' %>
+                        </a>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+<%= paginate @tenant_paiements %>
+<%= render  "shared/delete_modal" %>

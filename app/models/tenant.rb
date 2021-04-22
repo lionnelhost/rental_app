@@ -2,6 +2,14 @@ class Tenant < ApplicationRecord
     attr_accessor :country_code
 
     has_many :paiements, dependent: :destroy
+    has_one :apartment
+
+    mount_uploader :avatar, AvatarUploader
+
+    enum status: {
+      active: 'active',
+      inactive: "inactive"
+  }
 
     validates :firstname, 
         presence: {
@@ -39,5 +47,12 @@ class Tenant < ApplicationRecord
     
     def full_name 
         "#{firstname } #{lastname}" 
+    end
+
+    scope :active, lambda { where(:status => active)}
+    # Ex:- scope :active, lambda {where(:active => true)}
+
+    def active 
+      self.status == "active"
     end
 end
