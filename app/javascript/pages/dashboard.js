@@ -11,7 +11,6 @@ const dashboardChart = () => {
                 console.error('AJAX Error: ', status, error);
                 },
                 success: function (response) {
-                    console.log(response);
                     let elemt = document.getElementById("chart-paiements")
                     new Chart(elemt, {
                         label: "last 6 month paiements",

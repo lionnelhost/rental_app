@@ -1,4 +1,5 @@
 const showErrorPage = () => {
+  $(document).on('turbolinks:load', function(){
     if(window.location.pathname == "404" || window.location.pathname == "500") { 
       var pageX = $(document).width();
       var pageY = $(document).height();
@@ -19,6 +20,7 @@ const showErrorPage = () => {
   
       });
     }
-  }
+  });
+}
     
 export { showErrorPage }
