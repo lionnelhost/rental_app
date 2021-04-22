@@ -1,9 +1,12 @@
 puts "create sample user ...."
 
 user = User.new({
-    email: 'test@gmail.com',
+    email: 'admin@gmail.com',
     password: 'password',
-    password_confirmation: 'password'
+    password_confirmation: 'password',
+    firstname: "John",
+    lastname: "DOE",
+    phone_number: "786789878"
 });
 
 if user.save!

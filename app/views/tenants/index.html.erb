@@ -39,6 +39,14 @@
                 </div>
                 <!-- Light table -->
                 <div class="table-responsive">
+                    <div class="col-sm-2 mb-3">
+                        <select id="tenant_per_page_select" class="form-control">
+                            <option>select option</option>
+                            <% [5, 10, 20, 50, 100].each do |per_page| %>
+                                <option><%= per_page %></option>
+                            <% end %>
+                        </select>
+                    </div>
                     <!-- Projects table -->
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
@@ -46,7 +54,7 @@
                                 <th scope="col">N-</th>
                                 <th scope="col"><%= link_to "Nom", :sort => "firstname"%></th>
                                 <th scope="col"><%= link_to "Prenom",:sort => "lastname"%></th>
-                                <th scope="col">Nationalite</th>
+                                <th scope="col"><%= link_to "Status", :sort => "status"%></th>
                                 <th scope="col">email</th>
                                 <th scope="col">Telephone</th>
                                 <th scope="col">Profession</th>
@@ -69,7 +77,9 @@
                                         <%= tenant.lastname %>
                                     </td>
                                     <td>
-                                        <%= tenant.nationality %>
+                                        <span class="badge <%= tenant_status_class(tenant)%>">
+                                            <%= Tenant.human_enum_name(:status,tenant.status ) %>
+                                        </span>
                                     </td>
                                     <td>
                                         <%= tenant.email %>

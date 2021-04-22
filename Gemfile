@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'country_select', '~> 4.0'
 gem 'datetime_picker_input' 
 gem 'kaminari'
+gem 'groupdate'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

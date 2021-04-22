@@ -6,13 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# User.delete_all
+
+Paiement.delete_all
+Apartment.delete_all
 Tenant.delete_all 
+User.delete_all
 
 
+# laod users
+load Rails.root.join("db/seeds/users.rb")
 
-# Load dish types
+#load apartments
+load Rails.root.join("db/seeds/apartments.rb")
+
+# Load tenants
 load Rails.root.join("db/seeds/tenants.rb")
 
-# laod dishes
-# load Rails.root.join("db/seeds/users.rb")
+# Load paiements 
+load Rails.root.join("db/seeds/paiements.rb")
